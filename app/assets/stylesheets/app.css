@@ -20,7 +20,7 @@
 
 /* Pink outline button */
 .button.is-pink-outline {
-  border-color: #880e4f;
+  border: 2px solid #880e4f;
   color: #880e4f;
   background: transparent;
 }
