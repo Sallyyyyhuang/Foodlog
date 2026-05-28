@@ -31,6 +31,32 @@
   color: #e91e63;
 }
 
+/* Mauve outline button (Profile) */
+.button.is-mauve-outline {
+  border-color: #7b5ea7;
+  color: #7b5ea7;
+  background: transparent;
+}
+
+.button.is-mauve-outline:hover {
+  background-color: #ede7f6;
+  border-color: #5e35b1;
+  color: #5e35b1;
+}
+
+/* Teal outline button (Activities) */
+.button.is-teal-outline {
+  border-color: #00897b;
+  color: #00897b;
+  background: transparent;
+}
+
+.button.is-teal-outline:hover {
+  background-color: #e0f2f1;
+  border-color: #00695c;
+  color: #00695c;
+}
+
 /* Pink filled button */
 .button.is-pink {
   background-color: #e91e63;
