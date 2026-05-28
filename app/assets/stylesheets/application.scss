@@ -4,22 +4,20 @@ $baby-pink: #f8bbd0;
 $deep-pink: #880e4f;
 $mid-pink: #e91e63;
 
-/* Hero header */
-.hero.is-pink {
+/* Top pink banner navbar */
+.pink-banner {
   background-color: $baby-pink;
-
-  .navbar {
-    background-color: transparent;
-  }
+  border-bottom: 2px solid darken($baby-pink, 10%);
+  padding: 0.5rem 0;
 
   .navbar-item,
-  .navbar-item:hover {
+  .navbar-burger {
     color: $deep-pink;
-    background-color: transparent;
-  }
 
-  .title, .subtitle {
-    color: $deep-pink;
+    &:hover {
+      background-color: transparent;
+      color: $mid-pink;
+    }
   }
 }
 

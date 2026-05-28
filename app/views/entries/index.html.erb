@@ -1,4 +1,8 @@
-<% content_for :title do %>Today's Food Log<% end %>
+<%# Date + clock header %>
+<div class="has-text-centered mt-5 mb-2" data-controller="clock">
+  <p class="is-size-4 has-text-weight-bold" style="color: #880e4f;" data-clock-target="date"></p>
+  <p class="is-size-6" style="color: #c2185b;" data-clock-target="time"></p>
+</div>
 
 <%# Welcome banner %>
 <div class="columns is-centered mt-5">

@@ -1,48 +1,21 @@
-<section class="hero is-pink is-small">
-    <div class="hero-head">
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-brand">
-                    <%= link_to root_path, class: "navbar-item" do %>
-                      <span class="has-text-weight-bold is-size-4 ml-4">🌸 Foodlog</span>
-                    <% end %>
-                    <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </div>
-                <div id="navbarMenuHeroA" class="navbar-menu">
-                    <div class="navbar-end">
-                        <span class="navbar-item">
-                          <%= link_to "Profile", profile_path, class: "button is-pink-outline" %>
-                        </span>
-                        <span class="navbar-item">
-                          <%= link_to "Activities", activities_path, class: "button is-pink-outline" %>
-                        </span>
-                        <span class="navbar-item">
-                          <%= link_to "Create New Entry", new_entry_path, class: "button is-pink-outline" %>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </nav>
+<nav class="navbar pink-banner" role="navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <%= link_to root_path, class: "navbar-item" do %>
+        <span class="has-text-weight-bold is-size-4">🌸 Foodlog</span>
+      <% end %>
+      <a role="button" class="navbar-burger" data-target="pinkNav">
+        <span></span><span></span><span></span>
+      </a>
     </div>
-
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            <h1 class="title">
-                <% if content_for?(:title) %>
-                  <%= yield :title %>
-                <% else %>
-                  🌸 Foodlog
-                <% end %>
-            </h1>
-
-            <div class="clock-widget" data-controller="clock">
-              <div class="clock-time" data-clock-target="time"></div>
-              <div class="clock-date" data-clock-target="date"></div>
-            </div>
+    <div id="pinkNav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <%= link_to "👤 Profile", profile_path, class: "button is-pink-outline mr-2" %>
+          <%= link_to "🏃 Activities", activities_path, class: "button is-pink-outline mr-2" %>
+          <%= link_to "✏️ Create New Entry", new_entry_path, class: "button is-pink" %>
         </div>
+      </div>
     </div>
-</section>
+  </div>
+</nav>
