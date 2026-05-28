@@ -1,4 +1,33 @@
+<%# Weekly summary section %>
 <div class="columns is-centered mt-6">
+  <div class="column is-half">
+    <h2 class="title is-4 has-text-centered">Weekly Summary</h2>
+    <table class="table is-fullwidth is-striped is-hoverable">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th class="has-text-right">Calories</th>
+          <th class="has-text-right">Protein (g)</th>
+          <th class="has-text-right">Carbs (g)</th>
+          <th class="has-text-right">Fats (g)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @weekly_summary.each do |date, entries| %>
+          <tr>
+            <td><%= date %></td>
+            <td class="has-text-right"><%= entries.sum(&:calories) %></td>
+            <td class="has-text-right"><%= entries.sum(&:proteins) %></td>
+            <td class="has-text-right"><%= entries.sum(&:carbohydrates) %></td>
+            <td class="has-text-right"><%= entries.sum(&:fats) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="columns is-centered mt-4">
     <div class="column is-half">
         <% @entries.each do |day, entries| %>
           <h3 class="is-size-4 has-text-weight-bold mb-4 has-text-centered">Entries for <%= day %></h3>
@@ -29,7 +58,7 @@
               </div>
             </div>
           </nav>
-          
+
           <% entries.each do |entry| %>
             <%= link_to entry_path(entry) do %>
               <div class="card mb-3">

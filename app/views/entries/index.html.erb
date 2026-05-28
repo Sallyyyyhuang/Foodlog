@@ -2,7 +2,37 @@
   Foodlog &ndash; <%= DateTime.now %>
 <% end %>
 
-<div class="columns mt-6 is-centered is-multiline">
+<%# Calorie progress panel %>
+<div class="columns is-centered mt-5">
+  <div class="column is-half">
+    <% profile = Profile.first %>
+    <% if profile.nil? %>
+      <div class="notification is-warning is-light">
+        Set up your <%= link_to "profile", edit_profile_path %> to see your daily calorie goal.
+      </div>
+    <% else %>
+      <% today_calories = @entries.sum(&:calories) %>
+      <% goal = profile.daily_calorie_goal %>
+      <% burned = Activity.today.sum(:calories_burned) %>
+      <% net = today_calories - burned %>
+      <% progress_pct = [[today_calories * 100 / goal, 100].min, 0].max %>
+
+      <div class="box">
+        <p class="heading">Daily Calories</p>
+        <progress class="progress is-success mb-1" value="<%= progress_pct %>" max="100"></progress>
+        <p class="has-text-centered">
+          <strong><%= today_calories %></strong> / <%= goal %> kcal consumed
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <span class="has-text-danger"><strong><%= burned %></strong> kcal burned</span>
+          &nbsp;&nbsp;&rarr;&nbsp;&nbsp;
+          Net: <strong><%= net %></strong> kcal
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="columns mt-4 is-centered is-multiline">
   <% @entries.each do |entry| %>
   <div class="column is-one-quarter">
      <div class="card">
@@ -21,7 +51,7 @@
       <div class="card-footer">
          <%= link_to 'Show', entry, class: "card-footer-item" %>
          <%= link_to 'Edit', edit_entry_path(entry), class: "card-footer-item" %>
-         <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-footer-item" %>
+         <%= link_to 'Destroy', entry, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "card-footer-item" %>
       </div>
      </div>
    </div>
@@ -31,6 +61,3 @@
 <div class="has-text-centered mt-6">
   <%= link_to "View all entries", archives_index_path, class: "button is-link is-outlined" %>
 </div>
-
-
-
