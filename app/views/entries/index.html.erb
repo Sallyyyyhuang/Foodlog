@@ -1,9 +1,30 @@
-<% content_for :title do %>
-  Foodlog &ndash; <%= DateTime.now %>
-<% end %>
+<% content_for :title do %>Today's Food Log<% end %>
+
+<%# Welcome banner %>
+<div class="columns is-centered mt-5">
+  <div class="column is-half">
+    <div class="welcome-banner">
+      <div class="columns is-vcentered is-mobile">
+        <div class="column is-narrow">
+          <span class="welcome-emoji">🥗</span>
+        </div>
+        <div class="column">
+          <h2 class="title is-5 mb-1">Welcome to Foodlog!</h2>
+          <p class="is-size-7">Track your meals, activities, and hit your daily goals. Here's how:</p>
+          <ul class="is-size-7 mt-1" style="list-style: none; padding: 0;">
+            <li>🍽️ <strong>Create New Entry</strong> to log a meal — search food to auto-fill macros</li>
+            <li>🏃 <strong>Activities</strong> to log exercise and see calories burned</li>
+            <li>👤 <strong>Profile</strong> to set your stats and get a personalised calorie goal</li>
+            <li>📅 <strong>View all entries</strong> for a weekly summary</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%# Calorie progress panel %>
-<div class="columns is-centered mt-5">
+<div class="columns is-centered">
   <div class="column is-half">
     <% profile = Profile.first %>
     <% if profile.nil? %>
@@ -32,32 +53,40 @@
   </div>
 </div>
 
-<div class="columns mt-4 is-centered is-multiline">
-  <% @entries.each do |entry| %>
-  <div class="column is-one-quarter">
-     <div class="card">
-      <header class="card-header">
-        <p class="card-header-title"><%= entry.meal_type %></p>
-      </header>
-      <div class="card-content">
-        <div class="content">
-           <p><span class="has-text-weight-bold"><%= entry.calories %></span> calories</p>
-           <p><span class="has-text-weight-bold"><%= entry.proteins %></span> grams of protein</p>
-           <p><span class="has-text-weight-bold"><%= entry.carbohydrates %></span> grams of carbohydrates</p>
-           <p><span class="has-text-weight-bold"><%= entry.fats %></span> grams of fats</p>
-           <p class="italic">Logged <%= time_ago_in_words(entry.created_at) %> ago</p>
+<%# Today's entries %>
+<div class="columns mt-2 is-centered is-multiline">
+  <% if @entries.empty? %>
+    <div class="column is-half has-text-centered has-text-grey mt-4">
+      <p style="font-size: 3rem;">🍱</p>
+      <p>No entries yet today — log your first meal!</p>
+    </div>
+  <% else %>
+    <% @entries.each do |entry| %>
+    <div class="column is-one-quarter">
+       <div class="card">
+        <header class="card-header">
+          <p class="card-header-title"><%= entry.meal_type %></p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+             <p><span class="has-text-weight-bold"><%= entry.calories %></span> calories</p>
+             <p><span class="has-text-weight-bold"><%= entry.proteins %></span>g protein</p>
+             <p><span class="has-text-weight-bold"><%= entry.carbohydrates %></span>g carbs</p>
+             <p><span class="has-text-weight-bold"><%= entry.fats %></span>g fats</p>
+             <p class="is-size-7 has-text-grey">Logged <%= time_ago_in_words(entry.created_at) %> ago</p>
+          </div>
         </div>
-      </div>
-      <div class="card-footer">
-         <%= link_to 'Show', entry, class: "card-footer-item" %>
-         <%= link_to 'Edit', edit_entry_path(entry), class: "card-footer-item" %>
-         <%= link_to 'Destroy', entry, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "card-footer-item" %>
-      </div>
+        <div class="card-footer">
+           <%= link_to 'Show', entry, class: "card-footer-item" %>
+           <%= link_to 'Edit', edit_entry_path(entry), class: "card-footer-item" %>
+           <%= link_to 'Delete', entry, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "card-footer-item has-text-danger" %>
+        </div>
+       </div>
      </div>
-   </div>
+    <% end %>
   <% end %>
 </div>
 
-<div class="has-text-centered mt-6">
-  <%= link_to "View all entries", archives_index_path, class: "button is-link is-outlined" %>
+<div class="has-text-centered mt-5 mb-6">
+  <%= link_to "📅 View all entries", archives_index_path, class: "button is-link is-outlined" %>
 </div>

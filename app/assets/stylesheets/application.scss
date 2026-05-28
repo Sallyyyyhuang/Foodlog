@@ -1,10 +1,108 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+/* Baby pink theme overrides */
+
+$baby-pink: #f8bbd0;
+$deep-pink: #880e4f;
+$mid-pink: #e91e63;
+
+/* Hero header */
+.hero.is-pink {
+  background-color: $baby-pink;
+
+  .navbar {
+    background-color: transparent;
+  }
+
+  .navbar-item,
+  .navbar-item:hover {
+    color: $deep-pink;
+    background-color: transparent;
+  }
+
+  .title, .subtitle {
+    color: $deep-pink;
+  }
+}
+
+/* Nav buttons */
+.button.is-pink-outline {
+  border-color: $deep-pink;
+  color: $deep-pink;
+  background: transparent;
+
+  &:hover {
+    background-color: $baby-pink;
+    border-color: $mid-pink;
+    color: $mid-pink;
+  }
+}
+
+/* "View all entries" and other link buttons */
+.button.is-link.is-outlined {
+  border-color: $mid-pink;
+  color: $mid-pink;
+
+  &:hover {
+    background-color: $mid-pink;
+    color: white;
+  }
+}
+
+/* Progress bar */
+progress.is-success::-webkit-progress-value { background-color: $mid-pink; }
+progress.is-success::-moz-progress-bar      { background-color: $mid-pink; }
+progress.is-success                          { color: $mid-pink; }
+
+/* Clock widget */
+.clock-widget {
+  text-align: center;
+  padding: 0.25rem 0;
+
+  .clock-time {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: $deep-pink;
+    letter-spacing: 0.05em;
+  }
+
+  .clock-date {
+    font-size: 0.85rem;
+    color: darken($baby-pink, 35%);
+  }
+}
+
+/* Welcome banner */
+.welcome-banner {
+  background: linear-gradient(135deg, #fff0f5 0%, #fce4ec 100%);
+  border: 1px solid #f8bbd0;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+
+  .welcome-emoji {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  h2 {
+    color: $deep-pink;
+  }
+
+  p, li {
+    color: #555;
+  }
+}
+
+/* Card header pink accent */
+.card-header {
+  background-color: #fce4ec;
+
+  .card-header-title {
+    color: $deep-pink;
+  }
+}
+
+/* Notification flash override */
+.notification.is-link.is-light {
+  background-color: #fce4ec;
+  color: $deep-pink;
+}
