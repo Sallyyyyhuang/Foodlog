@@ -1,0 +1,25 @@
+<% content_for :title do %>Profile<% end %>
+
+<div class="columns is-centered mt-6">
+  <div class="column is-one-third">
+    <div class="box">
+      <h2 class="title is-4">Your Profile</h2>
+
+      <table class="table is-fullwidth">
+        <tbody>
+          <tr><th>Gender</th><td><%= @profile.gender.capitalize %></td></tr>
+          <tr><th>Age</th><td><%= @profile.age %> years</td></tr>
+          <tr><th>Weight</th><td><%= @profile.weight_kg %> kg</td></tr>
+          <tr><th>Height</th><td><%= @profile.height_cm %> cm</td></tr>
+          <tr><th>Activity Level</th><td><%= @profile.activity_level.humanize %></td></tr>
+        </tbody>
+      </table>
+
+      <div class="notification is-info is-light mt-4">
+        <strong>Daily Calorie Goal:</strong> <%= @profile.daily_calorie_goal %> kcal
+      </div>
+
+      <%= link_to "Edit Profile", edit_profile_path, class: "button is-link is-outlined" %>
+    </div>
+  </div>
+</div>

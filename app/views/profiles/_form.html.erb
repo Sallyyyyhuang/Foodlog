@@ -1,0 +1,48 @@
+<%= form_with(model: profile, url: profile_path) do |form| %>
+  <% if profile.errors.any? %>
+    <div class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</p>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% profile.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :gender, class: "label" %>
+    <%= form.select :gender, Profile::GENDERS.map { |g| [g.capitalize, g] },
+        { include_blank: "Select gender" }, class: "select is-fullwidth" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age, class: "label" %>
+    <%= form.number_field :age, class: "input", min: 1, max: 120 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight_kg, "Weight (kg)", class: "label" %>
+    <%= form.number_field :weight_kg, class: "input", step: 0.1, min: 1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height_cm, "Height (cm)", class: "label" %>
+    <%= form.number_field :height_cm, class: "input", step: 0.1, min: 1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :activity_level, class: "label" %>
+    <%= form.select :activity_level,
+        Profile::ACTIVITY_LEVELS.map { |l| [l.humanize, l] },
+        { include_blank: "Select activity level" }, class: "select is-fullwidth" %>
+  </div>
+
+  <div class="field mt-4">
+    <%= form.submit "Save Profile", class: "button is-success" %>
+  </div>
+<% end %>

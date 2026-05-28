@@ -10,13 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_08_180751) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_28_000002) do
+  create_table "activities", force: :cascade do |t|
+    t.string "activity_type"
+    t.integer "duration_minutes"
+    t.integer "steps"
+    t.integer "calories_burned"
+    t.datetime "logged_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "entries", force: :cascade do |t|
     t.string "meal_type"
     t.integer "calories"
     t.integer "proteins"
     t.integer "carbohydrates"
     t.integer "fats"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "gender"
+    t.integer "age"
+    t.decimal "weight_kg", precision: 6, scale: 2
+    t.decimal "height_cm", precision: 6, scale: 2
+    t.string "activity_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
