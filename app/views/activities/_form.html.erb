@@ -1,0 +1,47 @@
+<%= form_with(model: activity) do |form| %>
+  <% if activity.errors.any? %>
+    <div class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</p>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% activity.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div data-controller="activity-form">
+    <div class="field">
+      <%= form.label :activity_type, class: "label" %>
+      <%= form.select :activity_type,
+          Activity::ACTIVITY_TYPES.map { |t| [t.humanize, t] },
+          { include_blank: "Select activity" },
+          class: "select is-fullwidth",
+          data: { activity_form_target: "typeSelect", action: "change->activity-form#toggleSteps" } %>
+    </div>
+
+    <div class="field" data-activity-form-target="durationField">
+      <%= form.label :duration_minutes, "Duration (minutes)", class: "label" %>
+      <%= form.number_field :duration_minutes, class: "input", min: 1 %>
+    </div>
+
+    <div class="field is-hidden" data-activity-form-target="stepsField">
+      <%= form.label :steps, "Steps (walking only)", class: "label" %>
+      <%= form.number_field :steps, class: "input", min: 1 %>
+      <p class="help">Duration will be calculated from steps (100 steps/min)</p>
+    </div>
+
+    <div class="field">
+      <%= form.label :logged_at, "Logged at", class: "label" %>
+      <%= form.datetime_local_field :logged_at, class: "input" %>
+    </div>
+
+    <div class="field mt-4">
+      <%= form.submit "Log Activity", class: "button is-success" %>
+    </div>
+  </div>
+<% end %>

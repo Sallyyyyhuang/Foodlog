@@ -1,0 +1,47 @@
+<% content_for :title do %>Today's Activities<% end %>
+
+<div class="columns is-centered mt-6">
+  <div class="column is-half">
+    <div class="level mb-4">
+      <div class="level-left">
+        <h2 class="title is-4">Today's Activities</h2>
+      </div>
+      <div class="level-right">
+        <%= link_to "Log Activity", new_activity_path, class: "button is-success" %>
+      </div>
+    </div>
+
+    <% if @activities.any? %>
+      <div class="notification is-warning is-light mb-4">
+        <strong>Total Calories Burned Today:</strong> <%= @total_burned %> kcal
+      </div>
+
+      <% @activities.each do |activity| %>
+        <div class="card mb-3">
+          <div class="card-content">
+            <div class="level">
+              <div class="level-left">
+                <div>
+                  <strong><%= activity.activity_type.humanize %></strong><br>
+                  <% if activity.activity_type == "walking" && activity.steps.present? %>
+                    <%= activity.steps %> steps
+                  <% else %>
+                    <%= activity.duration_minutes %> minutes
+                  <% end %>
+                  &mdash; <span class="has-text-weight-bold"><%= activity.calories_burned %> kcal</span>
+                </div>
+              </div>
+              <div class="level-right">
+                <%= link_to "Delete", activity_path(activity),
+                    data: { turbo_method: :delete, turbo_confirm: "Delete this activity?" },
+                    class: "button is-danger is-small is-outlined" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="has-text-grey">No activities logged today.</p>
+    <% end %>
+  </div>
+</div>
