@@ -32,17 +32,17 @@
           
           <% entries.each do |entry| %>
             <%= link_to entry_path(entry) do %>
-            <div class="card">
-              <div class="card-content">
-                <strong><%= entry.meal_type %></strong><br/>
-                <%= entry.calories %> calories,
-                <%= entry.proteins %>g proteins,
-                <%= entry.carbohydrates %>g carbs,
-                <%= entry.fats %>g fats
+              <div class="card mb-3">
+                <div class="card-content">
+                  <strong><%= entry.meal_type %></strong><br/>
+                  <%= entry.calories %> calories,
+                  <%= entry.proteins %>g proteins,
+                  <%= entry.carbohydrates %>g carbs,
+                  <%= entry.fats %>g fats
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-         <% end %>
         <% end %>
     </div>
 </div>
