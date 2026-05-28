@@ -87,8 +87,28 @@ progress.is-success                          { color: $mid-pink; }
     color: $deep-pink;
   }
 
-  p, li {
+  p {
     color: #555;
+    font-size: 0.95rem;
+  }
+
+  li {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+}
+
+/* Pink filled button */
+.button.is-pink {
+  background-color: $mid-pink;
+  border-color: $mid-pink;
+  color: white;
+
+  &:hover {
+    background-color: $deep-pink;
+    border-color: $deep-pink;
+    color: white;
   }
 }
 
