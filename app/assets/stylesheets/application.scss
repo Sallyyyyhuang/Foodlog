@@ -1,71 +1,81 @@
-/* Baby pink theme overrides */
-
-$baby-pink: #f8bbd0;
-$deep-pink: #880e4f;
-$mid-pink: #e91e63;
+/* Baby pink theme */
 
 /* Top pink banner navbar */
 .pink-banner {
-  background-color: $baby-pink;
-  border-bottom: 2px solid darken($baby-pink, 10%);
+  background-color: #f8bbd0;
+  border-bottom: 2px solid #f48fb1;
   padding: 0.5rem 0;
-
-  .navbar-item,
-  .navbar-burger {
-    color: $deep-pink;
-
-    &:hover {
-      background-color: transparent;
-      color: $mid-pink;
-    }
-  }
 }
 
-/* Nav buttons */
+.pink-banner .navbar-item,
+.pink-banner .navbar-burger {
+  color: #880e4f;
+}
+
+.pink-banner .navbar-item:hover,
+.pink-banner .navbar-burger:hover {
+  background-color: transparent;
+  color: #e91e63;
+}
+
+/* Pink outline button */
 .button.is-pink-outline {
-  border-color: $deep-pink;
-  color: $deep-pink;
+  border-color: #880e4f;
+  color: #880e4f;
   background: transparent;
-
-  &:hover {
-    background-color: $baby-pink;
-    border-color: $mid-pink;
-    color: $mid-pink;
-  }
 }
 
-/* "View all entries" and other link buttons */
+.button.is-pink-outline:hover {
+  background-color: #f8bbd0;
+  border-color: #e91e63;
+  color: #e91e63;
+}
+
+/* Pink filled button */
+.button.is-pink {
+  background-color: #e91e63;
+  border-color: #e91e63;
+  color: white;
+}
+
+.button.is-pink:hover {
+  background-color: #880e4f;
+  border-color: #880e4f;
+  color: white;
+}
+
+/* "View all entries" link button */
 .button.is-link.is-outlined {
-  border-color: $mid-pink;
-  color: $mid-pink;
-
-  &:hover {
-    background-color: $mid-pink;
-    color: white;
-  }
+  border-color: #e91e63;
+  color: #e91e63;
 }
 
-/* Progress bar */
-progress.is-success::-webkit-progress-value { background-color: $mid-pink; }
-progress.is-success::-moz-progress-bar      { background-color: $mid-pink; }
-progress.is-success                          { color: $mid-pink; }
+.button.is-link.is-outlined:hover {
+  background-color: #e91e63;
+  color: white;
+}
+
+/* Progress bar pink */
+progress.is-success::-webkit-progress-value { background-color: #e91e63; }
+progress.is-success::-moz-progress-bar      { background-color: #e91e63; }
+progress.is-success                          { color: #e91e63; }
 
 /* Clock widget */
 .clock-widget {
   text-align: center;
   padding: 0.25rem 0;
+}
 
-  .clock-time {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: $deep-pink;
-    letter-spacing: 0.05em;
-  }
+.clock-widget .clock-time {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #880e4f;
+  letter-spacing: 0.05em;
+}
 
-  .clock-date {
-    font-size: 0.85rem;
-    color: darken($baby-pink, 35%);
-  }
+.clock-widget .clock-date {
+  font-size: 0.85rem;
+  color: #c2185b;
 }
 
 /* Welcome banner */
@@ -75,52 +85,39 @@ progress.is-success                          { color: $mid-pink; }
   border-radius: 12px;
   padding: 1.5rem 2rem;
   margin-bottom: 1.5rem;
-
-  .welcome-emoji {
-    font-size: 3rem;
-    line-height: 1;
-  }
-
-  h2 {
-    color: $deep-pink;
-  }
-
-  p {
-    color: #555;
-    font-size: 1.05rem;
-  }
-
-  li {
-    color: #555;
-    font-size: 1.05rem;
-    margin-bottom: 0.4rem;
-  }
 }
 
-/* Pink filled button */
-.button.is-pink {
-  background-color: $mid-pink;
-  border-color: $mid-pink;
-  color: white;
+.welcome-banner .welcome-emoji {
+  font-size: 3rem;
+  line-height: 1;
+}
 
-  &:hover {
-    background-color: $deep-pink;
-    border-color: $deep-pink;
-    color: white;
-  }
+.welcome-banner h2 {
+  color: #880e4f;
+}
+
+.welcome-banner p {
+  color: #555;
+  font-size: 1.05rem;
+}
+
+.welcome-banner li {
+  color: #555;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
 }
 
 /* Card header pink accent */
 .card-header {
   background-color: #fce4ec;
+}
 
-  .card-header-title {
-    color: $deep-pink;
-  }
+.card-header .card-header-title {
+  color: #880e4f;
 }
 
 /* Notification flash override */
 .notification.is-link.is-light {
   background-color: #fce4ec;
-  color: $deep-pink;
+  color: #880e4f;
 }
